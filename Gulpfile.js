@@ -3,7 +3,7 @@ var notify = require('gulp-notify');
 var bower = require('gulp-bower');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
-var concatCss = require('gulp-concat-css');
+var concatCss = require('gulp-cssnano');
 var minifyCss = require('gulp-minify-css')
 
 
