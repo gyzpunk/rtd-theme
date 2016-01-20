@@ -34,7 +34,7 @@ gulp.task('copy', function() {
 
 gulp.task('css', function() { 
   return gulp
-    .src([config.sassPath + '/style.scss', './resources/css/*.css'])
+    .src([config.sassPath + '/style.sass', './resources/css/*.css'])
     .pipe(sass({
       includePaths: [
         config.sassPath,
@@ -44,9 +44,7 @@ gulp.task('css', function() { 
         config.bowerDir + '/neat/app/assets/stylesheets',
         config.bowerDir + '/font-awesome/scss'
       ]}) 
-      .on("error", notify.onError(function (error) {
-        return "Error: " + error.message;
-      }))
+      .on("error", notify.onError({title: 'Error', message:'<%= error.message %>'}))
     ) 
     .pipe(cssNano())
     .pipe(rename('theme.css'))

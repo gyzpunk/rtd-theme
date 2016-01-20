@@ -1,0 +1,190 @@
+a
+  font-weight: 600
+
+  &:visited
+    font-weight: 200
+
+.btn
+  border: 1px solid transparent
+  border-radius: 2px
+  box-shadow: none
+
+.btn-neutral
+  background-color: $button-neutral-background-color '!important'
+  border-color: $button-neutral-background-color '!important'
+  color: $text-invert '!important'
+
+  &:hover
+    background-color: $black '!important'
+    border-color: $black '!important'
+    color: $text-invert
+
+  &:visited
+    color: $text-invert '!important'
+
+.wy-nav-content
+  max-width: 90%
+  padding: 1em
+
+// Footer Buttons (previous/next arrows)
+.rst-footer-buttons
+  a
+    &.fa-arrow-circle-left
+      &:before
+        content: '\f104'
+        margin-right: .5em
+
+    &.fa-arrow-circle-right
+      &:before
+        content: '\f105'
+        margin-left: .5em
+
+// Breadcrumbs
+.wy-breadcrumbs
+  color: #4d4d4d
+  font-weight: 600
+
+  li
+    &:contains('»')
+      &:after
+        content: '>'
+
+  a
+    &:visited
+      color: #bbb
+      font-weight: inherit
+      position: relative
+
+  li > a
+    &:after
+      background: $white
+      content: '\f105'
+      font-family: FontAwesome
+      padding: 5px 5px 0 0
+      position: absolute
+      right: -12px
+      top: 0
+
+// Left panel
+.wy-nav-side
+  background: #ccc
+  overflow-y: auto
+
+// Left panel - top bar
+.wy-side-nav-search
+  background: #f5f5f5
+  padding: 1.5em
+
+  input
+    &[type=text]
+      border-color: #e2e2e2
+      border-radius: 0
+      color: #707070
+      font-size: 14px
+      padding: 6px 12px
+      width: 100%
+
+  .version
+    display: none
+
+  > a
+    background: url('sg.png') left bottom no-repeat
+    font-size: 17px
+    padding: 7px 23px 7px 10px
+    text-indent: -9999px
+    width: 100%
+
+    &:hover
+      background-color: transparent
+
+    &:before
+      content: ''
+
+// Left panel - menu
+.wy-menu-vertical
+  a
+    color: #333
+    font-size: 14px
+
+  li
+    .toctree-l1 > a:hover,
+    .current > a
+      background-color: #2f333e '!important'
+      color: $white '!important'
+
+    .current
+      a
+        &:hover
+          background-color: #23558c '!important'
+          color: $white '!important'
+
+    .toctree-l2.current a
+      background-color: #009bcd
+      color: $white
+
+    .current > a span.toctree-expand,
+    .current > a:hover span.toctree-expand
+      color: $white
+
+    span
+      &.toctree-expand
+        margin: .2em .5em .2em -.9em
+
+// Main Panel
+// Headers
+.rst-content
+  h1,
+  h2
+    a
+      &.headerlink
+        display: inline
+
+  .admonition
+    table
+      border-color: #94e4ea
+
+  .admonition-title
+    background-color: #b2e1f0
+    border-color: #94e4ea
+    color: #009bcd
+
+  .note
+    background-color: $white
+    border: 1px solid transparent
+    border-radius: 2px
+    box-shadow: 0 1px 1px transparentize($black, .05)
+    margin-bottom: 20px
+    padding: 0
+
+    .first
+      border-bottom: 1px solid transparent
+      border-top-left-radius: 1px
+      border-top-right-radius: 1px
+      font-weight: inherit
+      margin: 0
+      padding: 11px 15px
+
+      &:before
+        content: '' '!important'
+
+      &+p
+        padding: 15px
+
+  .toctree-wrapper
+    ul
+      li
+        a
+          color: #777
+          &:hover,
+          &:focus
+            color: #333
+
+  code
+    color: #305CB5
+    font-weight: bold
+    white-space: normal
+
+  p
+    code
+      line-height: 1.4
+      margin: 0 2px -7px
