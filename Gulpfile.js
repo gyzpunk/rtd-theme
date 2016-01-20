@@ -1,9 +1,9 @@
-var gulp =  require('gulp')
+var gulp =  require('gulp');
 var notify = require('gulp-notify');
 var bower = require('gulp-bower');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
-var concatCss = require('gulp-cssnano');
+var cssNano = require('gulp-cssnano');
 var minifyCss = require('gulp-minify-css')
 
 
@@ -29,17 +29,21 @@ gulp.task('css', function() { 
     .pipe(sass({
       includePaths: [
         config.sassPath,
-        config.bowerDir + '/sphinx-rtd-theme/sass'
+        config.bowerDir + '/sphinx-rtd-theme/sass',
+        config.bowerDir + '/wyrm/sass',
+        config.bowerDir + '/bourbon/dist',
+        config.bowerDir + '/neat/app/assets/stylesheets',
+        config.bowerDir + '/font-awesome/scss'
       ]}) 
       .on("error", notify.onError(function (error) {
         return "Error: " + error.message;
       }))
     ) 
-    .pipe(concatCss('bundle.css'))
+    .pipe(cssNano('bundle.css'))
     .pipe(sourcemaps.init())
     .pipe(minifyCss({processImport: false, keepSpecialComments: 1}))
-    .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest(config.distDir + '/css')); 
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(config.distPath + '/css')); 
 });
 
 gulp.task('default', ['bower', 'copy', 'css']);

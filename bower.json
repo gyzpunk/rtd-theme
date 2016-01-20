@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "sphinx-rtd-theme": "git+https://github.com/snide/sphinx_rtd_theme.git#~0.1.9"
+    "sphinx-rtd-theme": "git+https://github.com/snide/sphinx_rtd_theme.git#~0.1.9",
+    "wyrm": "~1.0.9"
   }
 }
