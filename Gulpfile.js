@@ -5,7 +5,7 @@ var bower = require('gulp-bower');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var cssNano = require('gulp-cssnano');
-var minifyCss = require('gulp-minify-css')
+var minifyCss = require('gulp-minify-css');
 
 
 var config = {
@@ -46,7 +46,7 @@ gulp.task('css', ['bower', 'clean', 'copy'], function() { 
         return "Error: " + error.message;
       }))
     ) 
-    .pipe(cssNano('bundle.css'))
+    .pipe(cssNano())
     .pipe(sourcemaps.init())
     .pipe(minifyCss({processImport: false, keepSpecialComments: 1}))
     .pipe(sourcemaps.write('./'))
