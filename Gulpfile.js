@@ -6,7 +6,7 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var cssNano = require('gulp-cssnano');
 var minifyCss = require('gulp-minify-css');
-
+var rename = require('gulp-rename');
 
 var config = {
   sassPath: './resources/sass',
@@ -32,7 +32,8 @@ gulp.task('copy', ['bower', 'clean'], function() {
 });
 
 gulp.task('css', ['bower', 'clean', 'copy'], function() { 
-  return gulp.src([config.sassPath + '/style.scss', './resources/css/*.css'])
+  return gulp
+    .src([config.sassPath + '/style.scss', './resources/css/*.css'])
     .pipe(sass({
       includePaths: [
         config.sassPath,
@@ -47,6 +48,7 @@ gulp.task('css', ['bower', 'clean', 'copy'], function() { 
       }))
     ) 
     .pipe(cssNano())
+    .pipe(rename('theme.css'))
     .pipe(sourcemaps.init())
     .pipe(minifyCss({processImport: false, keepSpecialComments: 1}))
     .pipe(sourcemaps.write('./'))
