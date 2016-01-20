@@ -1,0 +1,22 @@
+{
+  "name": "rtd-theme",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Florent Captier <florent@captier.org>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sphinx-rtd-theme": "git+https://github.com/snide/sphinx_rtd_theme.git#~0.1.9"
+  }
+}
