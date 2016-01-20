@@ -1,4 +1,5 @@
 var gulp =  require('gulp');
+var clean =  require('gulp-clean');
 var notify = require('gulp-notify');
 var bower = require('gulp-bower');
 var sass = require('gulp-sass');
@@ -18,13 +19,19 @@ gulp.task('bower', function() { 
     .pipe(gulp.dest(config.bowerDir)) 
 });
 
-gulp.task('copy', function() {
+gulp.task('clean', function() {
+  return gulp
+    .src(config.distPath, {read: false})
+    .pipe(clean())
+});
+
+gulp.task('copy', ['bower', 'clean'], function() {
   return gulp
     .src(config.bowerDir + '/sphinx-rtd-theme/sphinx_rtd_theme/**/*.*')
     .pipe(gulp.dest(config.distPath))
 });
 
-gulp.task('css', function() { 
+gulp.task('css', ['bower', 'clean', 'copy'], function() { 
   return gulp.src([config.sassPath + '/style.scss', './resources/css/*.css'])
     .pipe(sass({
       includePaths: [
@@ -43,7 +50,7 @@ gulp.task('css', function() { 
     .pipe(sourcemaps.init())
     .pipe(minifyCss({processImport: false, keepSpecialComments: 1}))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(config.distPath + '/css')); 
+    .pipe(gulp.dest(config.distPath + '/static/css')); 
 });
 
-gulp.task('default', ['bower', 'copy', 'css']);
+gulp.task('default', ['clean', 'bower', 'copy', 'css']);
