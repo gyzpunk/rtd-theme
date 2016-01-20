@@ -1,4 +1,5 @@
 var gulp =  require('gulp');
+var sequence =  require('gulp-sequence');
 var clean =  require('gulp-clean');
 var notify = require('gulp-notify');
 var bower = require('gulp-bower');
@@ -11,7 +12,7 @@ var rename = require('gulp-rename');
 var config = {
   sassPath: './resources/sass',
   bowerDir: './bower_components',
-  distPath: './dist'
+  distPath: './dist1'
 }
 
 gulp.task('bower', function() { 
@@ -25,13 +26,13 @@ gulp.task('clean', function() {
     .pipe(clean())
 });
 
-gulp.task('copy', ['bower', 'clean'], function() {
+gulp.task('copy', function() {
   return gulp
     .src(config.bowerDir + '/sphinx-rtd-theme/sphinx_rtd_theme/**/*.*')
     .pipe(gulp.dest(config.distPath))
 });
 
-gulp.task('css', ['bower', 'clean', 'copy'], function() { 
+gulp.task('css', function() { 
   return gulp
     .src([config.sassPath + '/style.scss', './resources/css/*.css'])
     .pipe(sass({
@@ -55,4 +56,4 @@ gulp.task('css', ['bower', 'clean', 'copy'], function() { 
     .pipe(gulp.dest(config.distPath + '/static/css')); 
 });
 
-gulp.task('default', ['clean', 'bower', 'copy', 'css']);
+gulp.task('default', sequence('clean', 'bower', 'copy', 'css'));
