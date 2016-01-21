@@ -12,7 +12,7 @@ var rename = require('gulp-rename');
 var config = {
   sassPath: './resources/sass',
   bowerDir: './bower_components',
-  distPath: './dist'
+  distPath: './sphinx_custom_theme'
 }
 
 gulp.task('bower', function() { 
